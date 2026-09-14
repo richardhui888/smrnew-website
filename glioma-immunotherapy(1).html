@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimodal Immunotherapy for Glioma | RH Partners Limited</title>
+    <meta name="description" content="A revolutionary five-module synergy approach combining physical intervention, biological regulation, dietary support, and anti-inflammatory support for glioma treatment.">
+    <style>
+        /* ===== CSS Reset & Base ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #2E3440;
+            line-height: 1.7;
+            background: #FAFBFC;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ===== Color Palette ===== */
+        :root {
+            --primary: #1C3A5E;       /* Deep navy */
+            --primary-light: #2D5F8A; /* Steel blue */
+            --accent: #2A6B5A;        /* Teal green */
+            --accent-light: #3A7D6A;
+            --light-bg: #F0F4F8;
+            --white: #FFFFFF;
+            --text: #2E3440;
+            --text-light: #5A6577;
+            --border: #D1D9E0;
+            --gradient-hero: linear-gradient(135deg, #1C3A5E 0%, #2D5F8A 50%, #2A6B5A 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --radius: 12px;
+        }
+
+        /* ===== Typography ===== */
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; color: var(--primary); }
+        h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+        h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+        p { margin-bottom: 1rem; color: var(--text-light); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .text-center { text-align: center; }
+        .text-accent { color: var(--accent); }
+
+        /* ===== Navigation ===== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(28, 58, 94, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+        nav .container {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        nav .logo {
+            font-size: 1.3rem; font-weight: 700; color: var(--white);
+            letter-spacing: 1px;
+        }
+        nav .logo span { color: #7EC8A0; }
+        nav ul { display: flex; gap: 2rem; }
+        nav ul li a {
+            color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover { color: #7EC8A0; }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+        .nav-toggle span {
+            display: block; width: 25px; height: 3px; background: var(--white);
+            margin: 5px 0; border-radius: 2px;
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            background: var(--gradient-hero);
+            color: var(--white);
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(42,107,90,0.2) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 850px; margin: 0 auto; }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 0.4rem 1.2rem; border-radius: 50px;
+            font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase;
+            margin-bottom: 1.5rem; color: #C8E6C9;
+        }
+        .hero h1 { color: var(--white); margin-bottom: 1.5rem; }
+        .hero p { color: rgba(255,255,255,0.9); font-size: 1.15rem; max-width: 650px; margin: 0 auto 2.5rem; }
+        .btn {
+            display: inline-block; padding: 0.85rem 2.2rem; border-radius: 50px;
+            font-weight: 600; font-size: 1rem; transition: all 0.3s; cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: var(--white); color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.25); }
+        .btn-outline {
+            background: transparent; color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+            margin-left: 1rem;
+        }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+        .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+        /* ===== Section Base ===== */
+        section { padding: 5rem 2rem; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
+        .section-header h2 { position: relative; display: inline-block; }
+        .section-header h2::after {
+            content: ''; display: block; width: 60px; height: 4px;
+            background: var(--accent); margin: 0.75rem auto 0; border-radius: 2px;
+        }
+        .section-header p { font-size: 1.05rem; }
+
+        /* ===== Overview / System ===== */
+        .overview { background: var(--white); }
+        .overview-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; margin-top: 2.5rem;
+        }
+        .overview-card {
+            background: var(--light-bg); border-radius: var(--radius);
+            padding: 2.5rem 2rem; text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+        .overview-card:hover {
+            transform: translateY(-5px); box-shadow: var(--shadow-md);
+        }
+        .overview-card .icon {
+            width: 70px; height: 70px; border-radius: 50%;
+            background: var(--gradient-hero);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.5rem; font-size: 1.8rem; color: var(--white);
+        }
+        .overview-card h3 { color: var(--primary); font-size: 1.2rem; }
+        .overview-card p { font-size: 0.95rem; }
+
+        /* ===== Four Dimensions ===== */
+        .dimensions { background: var(--light-bg); }
+        .dim-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        .dim-card {
+            background: var(--white); border-radius: var(--radius);
+            padding: 2rem; border-left: 4px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+        }
+        .dim-card h4 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .dim-card p { font-size: 0.95rem; margin: 0; }
+
+        /* ===== Module Sections ===== */
+        .module { padding: 5rem 2rem; position: relative; }
+        .module:nth-child(even) { background: var(--white); }
+        .module:nth-child(odd) { background: var(--light-bg); }
+        .module-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+        }
+        .module-number {
+            display: inline-block;
+            font-size: 0.85rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+        .module h2 { color: var(--primary); margin-bottom: 1.25rem; }
+        .module p { font-size: 1.02rem; }
+        .module-visual {
+            background: var(--gradient-hero); border-radius: var(--radius);
+            padding: 3rem; color: var(--white); position: relative; overflow: hidden;
+        }
+        .module-visual::before {
+            content: ''; position: absolute; top: -50%; right: -50%;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .module-visual h3 { color: #C8E6C9; font-size: 1.1rem; margin-bottom: 1.5rem; letter-spacing: 1px; }
+        .module-visual ul { space-y: 1rem; }
+        .module-visual li {
+            padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.95rem; line-height: 1.6;
+        }
+        .module-visual li:last-child { border-bottom: none; }
+        .module-visual li strong { color: #A5D6A7; }
+
+        /* ===== Key Mechanism Boxes ===== */
+        .mechanism-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem; margin-top: 2rem;
+        }
+        .mechanism-box {
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px; padding: 1.5rem;
+        }
+        .mechanism-box .num {
+            font-size: 2rem; font-weight: 700; color: #7EC8A0;
+            display: block; margin-bottom: 0.5rem;
+        }
+        .mechanism-box h4 { color: var(--white); font-size: 1rem; margin-bottom: 0.5rem; }
+        .mechanism-box p { color: rgba(255,255,255,0.8); font-size: 0.88rem; margin: 0; }
+
+        /* ===== Conclusion ===== */
+        .conclusion {
+            background: var(--gradient-hero); color: var(--white);
+            text-align: center; padding: 6rem 2rem;
+        }
+        .conclusion h2 { color: var(--white); margin-bottom: 1.5rem; }
+        .conclusion p { color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 650px; margin: 0 auto 2rem; }
+        .advantages {
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+        .adv-item { text-align: center; max-width: 250px; }
+        .adv-item .icon {
+            width: 60px; height: 60px; border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1rem; font-size: 1.5rem;
+        }
+        .adv-item h4 { color: #C8E6C9; font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .adv-item p { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin: 0; }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #0D1B2E; color: rgba(255,255,255,0.6);
+            text-align: center; padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+        footer .footer-brand { color: var(--white); font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; }
+        footer p { margin: 0.25rem 0; font-size: 0.85rem; }
+
+        /* ===== Disclaimer ===== */
+        .disclaimer {
+            background: #FFF8E1; border-top: 3px solid #FFD54F;
+            padding: 2rem; text-align: center;
+        }
+        .disclaimer p { color: #795548; font-size: 0.85rem; max-width: 800px; margin: 0 auto; }
+        .disclaimer strong { color: #5D4037; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .nav-toggle { display: block; }
+            .module-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+            .hero { padding: 8rem 2rem 4rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-outline { margin-left: 0; }
+            section { padding: 3.5rem 1.5rem; }
+            .advantages { gap: 2rem; }
+        }
+
+        /* ===== Animations ===== */
+        .fade-in {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <!-- ===== Navigation ===== -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">RH <span>Partners</span></a>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===== Hero ===== -->
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">Scientific Breakthrough &bull; August 2026</span>
+            <h1>Multimodal Immunotherapy<br>for Glioma</h1>
+            <p>A revolutionary five-module synergy approach combining physical intervention, biological regulation, dietary support, and anti-inflammatory therapy — enabling precision targeting and long-term control of glioma while protecting normal brain tissue and function.</p>
+            <div class="hero-buttons">
+                <a href="#overview" class="btn btn-primary">Explore the Science</a>
+                <a href="#modules" class="btn btn-outline">Five Modules</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== System Overview ===== -->
+    <section id="overview" class="overview">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>System Overview</h2>
+                <p>Five Core Modules &middot; Four Integrated Dimensions &middot; One Integrated System</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card fade-in">
+                    <div class="icon">&#9878;</div>
+                    <h3>Restore Immune Pathways</h3>
+                    <p>Reawaken the body's natural immune surveillance through near-infrared light therapy, repairing lymphatic vessels and enhancing antigen presentation.</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <div class="icon">&#9876;</div>
+                    <h3>Disrupt Tumor Metabolism</h3>
+                    <p>Target the tumor's metabolic engine with biochip technology, inducing apoptosis and reverse proliferation of glioma cells.</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <div class="icon">&#9889;</div>
+                    <h3>Enhance Immune Activity</h3>
+                    <p>Boost innate and adaptive immunity through controlled moderate warming, activating neutrophils, macrophages, NK cells, and lymphocytes.</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <div class="icon">&#9851;</div>
+                    <h3>Cut Off Energy Supply</h3>
+                    <p>Starve tumor cells by exploiting their glucose addiction through a scientifically designed ketogenic diet protocol.</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <div class="icon">&#9877;</div>
+                    <h3>Multi-pathway Inflammation Control</h3>
+                    <p>Suppress chronic inflammation with a precision-blended 9-oil formulation, creating an optimal environment for immunotherapy to work at full strength.</p>
+                </div>
+            </div>
+
+            <div class="dim-grid fade-in" style="margin-top: 3rem;">
+                <div class="dim-card">
+                    <h4>Physical Intervention</h4>
+                    <p>Near-infrared light and bioenergy device deliver precise physical stimuli to target tissue.</p>
+                </div>
+                <div class="dim-card">
+                    <h4>Biological Regulation</h4>
+                    <p>Biochip technology modulates cellular ion channels and immune signaling pathways.</p>
+                </div>
+                <div class="dim-card">
+                    <h4>Dietary Support</h4>
+                    <p>Ketogenic diet protocol exploits metabolic vulnerabilities of glioma cells.</p>
+                </div>
+                <div class="dim-card">
+                    <h4>Anti-inflammatory Support</h4>
+                    <p>Omega-3 rich oil blend suppresses chronic inflammation across multiple pathways.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Module 01: Near-Infrared Light ===== -->
+    <section id="module1" class="module">
+        <div class="module-inner">
+            <div class="fade-in">
+                <span class="module-number">Module 01</span>
+                <h2>Near-Infrared Light</h2>
+                <p><strong>Repairing lymphatic vessels and activating the immune system.</strong></p>
+                <p>Near-infrared light at specific wavelengths opens the cerebrospinal fluid (CSF) clearance pathway, effectively reawakening the brain's immune surveillance capabilities.</p>
+                
+                <div class="mechanism-grid">
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">01</span>
+                        <h4 style="color: var(--primary);">Specific-wavelength near-infrared light</h4>
+                        <p style="color: var(--text-light);">Targeted light energy penetrates tissue to initiate therapeutic cascade.</p>
+                    </div>
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">02</span>
+                        <h4 style="color: var(--primary);">Repair meningeal lymphatic vessels</h4>
+                        <p style="color: var(--text-light);">Restores the brain's waste clearance infrastructure.</p>
+                    </div>
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">03</span>
+                        <h4 style="color: var(--primary);">Increase CSF clearance</h4>
+                        <p style="color: var(--text-light);">Enhanced removal of metabolites and inflammatory mediators.</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 2rem; color: var(--primary);">Dual Action &mdash; 2&times; Immune Effects</h3>
+                <ul style="margin-top: 1rem; space-y: 0.75rem;">
+                    <li style="padding: 0.5rem 0;"><strong style="color: var(--accent);">&#10003; Antigen Presentation:</strong> Accelerates transport of tumor-specific antigens to cervical lymph nodes for efficient presentation, activating cytotoxic T cells to target tumor cells.</li>
+                    <li style="padding: 0.5rem 0;"><strong style="color: var(--accent);">&#10003; Microenvironment Remodeling:</strong> Clears lactic acid and tumor-cell metabolites, disrupting the immunosuppressive tumor microenvironment.</li>
+                </ul>
+            </div>
+            <div class="module-visual fade-in">
+                <h3>&#9733; CORE MECHANISM</h3>
+                <div style="margin-top: 1.5rem;">
+                    <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
+                        <strong style="color: #7EC8A0;">Step 1</strong> &mdash; Specific-wavelength near-infrared light is applied
+                    </div>
+                    <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
+                        <strong style="color: #7EC8A0;">Step 2</strong> &mdash; Meningeal lymphatic vessels are repaired and restored
+                    </div>
+                    <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
+                        <strong style="color: #7EC8A0;">Step 3</strong> &mdash; CSF clearance increases, flushing out toxins
+                    </div>
+                    <div style="padding: 1rem 0;">
+                        <strong style="color: #7EC8A0;">Result</strong> &mdash; Dual immune activation: antigen presentation + microenvironment remodeling
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Module 02: Biochip ===== -->
+    <section id="module2" class="module">
+        <div class="module-inner">
+            <div class="module-visual fade-in">
+                <h3>&#9733; CORE TARGET</h3>
+                <div style="margin-top: 1.5rem;">
+                    <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
+                        <strong style="color: #7EC8A0;">Component 1</strong> &mdash; Receiving antenna captures signal
+                    </div>
+                    <div style="padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
+                        <strong style="color: #7EC8A0;">Component 2</strong> &mdash; Coupled resonant circuit amplifies
+                    </div>
+                    <div style="padding: 1rem 0;">
+                        <strong style="color: #7EC8A0;">Component 3</strong> &mdash; Binary encoded information delivers precise modulation
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.08); border-radius: 8px;">
+                    <strong style="color: #A5D6A7;">Key Action:</strong> Specifically modulates sodium-potassium pump activity to suppress tumor cell viability.
+                </div>
+            </div>
+            <div class="fade-in">
+                <span class="module-number">Module 02</span>
+                <h2>Biochip</h2>
+                <p><strong>Precision strike against the tumor's metabolic engine.</strong></p>
+                <p>The biochip technology achieves targeted regulation by dismantling tumor metabolism, inducing apoptosis and re-differentiation of glioma cells through precise nanoscale modulation.</p>
+
+                <h3 style="margin-top: 1.5rem; color: var(--primary);">Triple Kill Effect</h3>
+                <ul style="margin-top: 1rem;">
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Precision Apoptosis:</strong> Na<sup>+</sup>/K<sup>+</sup> pump inhibition raises intracellular Na<sup>+</sup>, releasing Ca<sup>2+</sup> and triggering tumor-cell apoptosis.</li>
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Reverse Proliferation:</strong> Tumor cells shift from abnormal proliferation back toward normal differentiation, losing unlimited growth capacity.</li>
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Metabolic Starvation:</strong> Collapse of the Na<sup>+</sup> gradient blocks glucose and amino-acid uptake, cutting off the tumor's energy supply.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Module 03: Bioenergy Device ===== -->
+    <section id="module3" class="module">
+        <div class="module-inner">
+            <div class="fade-in">
+                <span class="module-number">Module 03</span>
+                <h2>Bioenergy Device</h2>
+                <p><strong>Boosting immunity through controlled heat.</strong></p>
+                <p>A slight rise in body temperature (+1-2&deg;C) acts as both mobilizer and accelerator for immune cells, turning controlled heat into a systemic activation signal.</p>
+
+                <div class="mechanism-grid">
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">01</span>
+                        <h4 style="color: var(--primary);">Enhanced Innate Immunity</h4>
+                        <p style="color: var(--text-light);">Neutrophil, macrophage and NK-cell activity increase markedly.</p>
+                    </div>
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">02</span>
+                        <h4 style="color: var(--primary);">Lymphocyte Response</h4>
+                        <p style="color: var(--text-light);">T and B cell activation, proliferation and differentiation accelerate.</p>
+                    </div>
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">03</span>
+                        <h4 style="color: var(--primary);">Cytokine Effects</h4>
+                        <p style="color: var(--text-light);">IL-1, IL-6 and TNF-&alpha; signaling becomes more efficient.</p>
+                    </div>
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">04</span>
+                        <h4 style="color: var(--primary);">Heat Shock Proteins</h4>
+                        <p style="color: var(--text-light);">HSPs act as danger signals and molecular chaperones.</p>
+                    </div>
+                    <div class="mechanism-box" style="background: var(--light-bg); border: 1px solid var(--border);">
+                        <span class="num" style="color: var(--primary);">05</span>
+                        <h4 style="color: var(--primary);">Physiological Optimization</h4>
+                        <p style="color: var(--text-light);">Blood flow, lymphatic circulation speed up; acute-phase protein synthesis rises.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="module-visual fade-in">
+                <h3>&#9733; CORE VALUE</h3>
+                <div style="text-align: center; margin: 2rem 0;">
+                    <div style="font-size: 4rem; font-weight: 700; color: #7EC8A0; line-height: 1;">+1-2&deg;C</div>
+                    <div style="font-size: 1.1rem; color: rgba(255,255,255,0.85); margin-top: 0.5rem;">Body Temperature Regulation</div>
+                </div>
+                <p style="color: rgba(255,255,255,0.9); font-size: 0.95rem;">Body temperature regulates immune function across multiple dimensions, turning controlled heat into a systemic activation signal for comprehensive immune system mobilization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Module 04: Ketogenic Diet ===== -->
+    <section id="module4" class="module">
+        <div class="module-inner">
+            <div class="module-visual fade-in">
+                <h3>&#9733; DIABETES-FREE APPROACH</h3>
+                <div style="margin-top: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
+                        <span style="font-size: 2rem;">&#127859;</span>
+                        <div>
+                            <strong style="color: #7EC8A0;">High Fat</strong>
+                            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Primary energy source</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.15);">
+                        <span style="font-size: 2rem;">&#9747;</span>
+                        <div>
+                            <strong style="color: #7EC8A0;">Very Low Carb</strong>
+                            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Minimize glucose availability</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0;">
+                        <span style="font-size: 2rem;">&#127827;</span>
+                        <div>
+                            <strong style="color: #7EC8A0;">Moderate Protein</strong>
+                            <div style="font-size: 0.85rem; color: rgba(255,255,255,0.7);">Maintain muscle mass</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fade-in">
+                <span class="module-number">Module 04</span>
+                <h2>Ketogenic Diet</h2>
+                <p><strong>Cutting off the tumor's energy supply.</strong></p>
+                <p>The ketogenic diet targets the tumor's sugar addiction by precisely cutting off glucose supply while protecting normal brain tissue.</p>
+
+                <h3 style="margin-top: 1.5rem; color: var(--primary);">Three Pillars</h3>
+                <ul style="margin-top: 1rem;">
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Dietary Principle:</strong> High fat, very low carbohydrate and moderate protein, driving the liver to produce ketone bodies as the primary fuel.</li>
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Core Anti-Cancer Logic:</strong> Normal brain cells use ketones efficiently and stay protected, while glioma cells depend on glucose and cannot metabolize ketones.</li>
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Key Advantage:</strong> Ketone bodies cross the blood-brain barrier easily, delivering targeted metabolic pressure inside the skull.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Module 05: Anti-inflammatory Aid ===== -->
+    <section id="module5" class="module">
+        <div class="module-inner">
+            <div class="fade-in">
+                <span class="module-number">Module 05</span>
+                <h2>Anti-inflammatory Aid</h2>
+                <p><strong>The synergistic role of sea buckthorn and milk thistle oil.</strong></p>
+                <p>Curbing chronic inflammation so the other four modules can work at full strength through a scientifically balanced multi-target system.</p>
+
+                <h3 style="margin-top: 1.5rem; color: var(--primary);">Core Components</h3>
+                <p><strong>9 Oils &mdash; A Scientifically Balanced Blend</strong></p>
+                <p>Led by Omega-3 fatty acids as the primary anti-inflammatory force, this precision formulation delivers broad-spectrum inflammation control.</p>
+
+                <h3 style="margin-top: 1.5rem; color: var(--primary);">Anti-Inflammatory Mechanisms</h3>
+                <ul style="margin-top: 1rem;">
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Direct Inhibition:</strong> Marine fish oil supplies EPA and DHA, which efficiently suppress production of pro-inflammatory mediators.</li>
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Conversion &amp; Supplementation:</strong> Perilla, flaxseed and walnut oils supply alpha-linolenic acid, converted in the body into further EPA and DHA.</li>
+                    <li style="padding: 0.6rem 0;"><strong style="color: var(--accent);">&#10003; Multi-Target Synergy:</strong> Complementary pathways deliver broad-spectrum control of chronic inflammation across the system and supports the effectiveness of immunotherapy.</li>
+                </ul>
+            </div>
+            <div class="module-visual fade-in">
+                <h3>&#9733; MULTI-TARGET SYSTEM</h3>
+                <div style="margin-top: 2rem; text-align: center;">
+                    <div style="font-size: 5rem; font-weight: 700; color: #7EC8A0; line-height: 1;">9</div>
+                    <div style="font-size: 1.3rem; color: rgba(255,255,255,0.9);">Precision-Blended Oils</div>
+                </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(255,255,255,0.08); border-radius: 8px;">
+                    <div style="margin-bottom: 1rem;"><strong style="color: #A5D6A7;">Primary Force:</strong> Omega-3 Fatty Acids (EPA &amp; DHA)</div>
+                    <div style="margin-bottom: 1rem;"><strong style="color: #A5D6A7;">Supporting Oils:</strong> Perilla, Flaxseed, Walnut</div>
+                    <div><strong style="color: #A5D6A7;">Outcome:</strong> Broad-spectrum chronic inflammation control</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Conclusion ===== -->
+    <section id="conclusion" class="conclusion">
+        <div class="container">
+            <div class="fade-in">
+                <h2>A New Paradigm in Glioma Treatment</h2>
+                <p>Five modules. Four dimensions. One integrated system. A comprehensive treatment option for patients facing glioma and its recurrence &mdash; beyond the limits of conventional therapy.</p>
+                
+                <div class="advantages">
+                    <div class="adv-item">
+                        <div class="icon">&#9878;</div>
+                        <h4>Multi-dimensional Synergy</h4>
+                        <p>Physical, biological and dietary interventions combined into one scientific framework, amplifying efficacy through synergy.</p>
+                    </div>
+                    <div class="adv-item">
+                        <div class="icon">&#9733;</div>
+                        <h4>Core Advantages</h4>
+                        <p>Precise targeting of tumor cells while normal brain tissue and function stay protected.</p>
+                    </div>
+                    <div class="adv-item">
+                        <div class="icon">&#9876;</div>
+                        <h4>Clinical Significance</h4>
+                        <p>A comprehensive treatment option for patients facing glioma and its recurrence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Disclaimer ===== -->
+    <div class="disclaimer">
+        <p><strong>Disclaimer:</strong> This website is for informational and promotional purposes only. The content presented herein is based on scientific research and clinical observations. It is not intended as medical advice. Always consult with a qualified healthcare professional before making any decisions regarding diagnosis or treatment. Individual results may vary.</p>
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <footer>
+        <div class="footer-brand">RH Partners Limited</div>
+        <p>Advancing multimodal immunotherapy research for glioma treatment</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.4);">&copy; 2026 RH Partners Limited. All rights reserved.</p>
+    </footer>
+
+    <!-- ===== JavaScript ===== -->
+    <script>
+        // Mobile nav toggle
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            const ul = document.querySelector('nav ul');
+            ul.style.display = ul.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Scroll fade-in animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile nav if open
+                    if (window.innerWidth <= 768) {
+                        document.querySelector('nav ul').style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
